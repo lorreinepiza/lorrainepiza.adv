@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Lorraine Piza - Cartão Digital</title>
+    
+    <!-- Google Fonts: Substitutos Premium para LiteON e Modern Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Outfit (Estilo LiteON) e DM Sans (Estilo Modern Sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Paleta de Cores */
+            --marsala-dark: #2a0a10;
+            --marsala-mid: #4a121f;
+            --marsala-light: #691f30;
+            
+            /* Gradiente Dourado Luxuoso */
+            --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --gold-solid: #bf953f;
+            
+            /* Fontes */
+            --font-title: 'Outfit', sans-serif; /* Alternativa para LiteON */
+            --font-body: 'DM Sans', sans-serif; /* Alternativa para Modern Sans */
+            
+            /* Efeitos */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 215, 0, 0.25);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: radial-gradient(circle at top center, var(--marsala-mid), var(--marsala-dark));
+            background-attachment: fixed;
+            min-height: 100vh;
+            font-family: var(--font-body);
+            color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        /* Fundo com ruído sutil para textura de papel premium */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .card-container {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            padding: 45px 30px;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 1.5s ease-out;
+            
+            /* Estilo do "Cartão/Label" */
+            background: rgba(20, 5, 8, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 2px solid var(--gold-solid);
+            border-radius: 24px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 
+                        0 0 20px rgba(191, 149, 63, 0.15);
+        }
+
+        /* Detalhe decorativo no topo */
+        .card-container::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 4px;
+            background: var(--gold-solid);
+            border-radius: 2px;
+            opacity: 0.5;
+        }
+
+        /* --- Header Profile --- */
+        .profile-section {
+            text-align: center;
+            margin-bottom: 35px;
+            width: 100%;
+        }
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 20px rgba(191, 149, 63, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Fonte alterada para Outfit */
+            font-family: var(--font-title);
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: transparent;
+            background-image: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            position: relative;
+            letter-spacing: -1px; /* Ajuste fino para monograma moderno */
+        }
+
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            border-radius: 50%;
+            border: 1px solid transparent;
+            background: linear-gradient(45deg, transparent, rgba(255,215,0,0.6), transparent) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            animation: rotateGlow 4s linear infinite;
+        }
+
+        h1 {
+            /* Fonte alterada para Outfit */
+            font-family: var(--font-title);
+            font-size: 1.7rem;
+            line-height: 1.2;
+            margin-bottom: 6px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            text-transform: uppercase; /* Frequentemente usado em estilos LiteON/Moderno */
+        }
+
+        h2 {
+            /* Fonte alterada para Outfit (subtítulos) */
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #dcdcdc;
+            margin-bottom: 8px;
+            font-weight: 300;
+        }
+
+        .oab-badge {
+            display: inline-block;
+            padding: 5px 14px;
+            font-size: 0.75rem;
+            border-radius: 20px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(191, 149, 63, 0.3);
+            color: #bf953f;
+            letter-spacing: 1px;
+            font-family: var(--font-body);
+        }
+
+        /* --- Botões Liquid Glass --- */
+        .links-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .glass-btn {
+            position: relative;
+            text-decoration: none;
+            width: 100%;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 14px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 
+                0 4px 15px rgba(0,0,0,0.2), 
+                inset 0 0 20px rgba(255,255,255,0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+        }
+
+        .glass-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transform: skewX(-25deg);
+            transition: 0.5s;
+        }
+
+        .glass-btn:hover::before {
+            left: 150%;
+            transition: 0.7s;
+        }
+
+        .glass-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 0 20px rgba(255,215,0,0.05);
+        }
+
+        .glass-btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .btn-icon {
+            font-size: 1.3rem;
+            margin-right: 14px;
+            width: 28px;
+            text-align: center;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .btn-text {
+            /* Fonte alterada para DM Sans (estilo Modern Sans) */
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #f5f5f5;
+            letter-spacing: 0.5px;
+            flex-grow: 1;
+        }
+
+        .btn-arrow {
+            color: rgba(191, 149, 63, 0.6);
+            font-size: 0.8rem;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0.6;
+        }
+
+        footer p {
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            color: #b0b0b0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .glass-btn { opacity: 0; animation: fadeInUp 0.6s forwards; }
+        .glass-btn:nth-child(1) { animation-delay: 0.2s; }
+        .glass-btn:nth-child(2) { animation-delay: 0.35s; }
+        .glass-btn:nth-child(3) { animation-delay: 0.5s; }
+        .glass-btn:nth-child(4) { animation-delay: 0.65s; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        
+        <!-- Perfil -->
+        <header class="profile-section">
+            <div class="profile-image">
+                LP
+            </div>
+            
+            <h1>Dra. Lorraine Piza</h1>
+            <h2>Advogada</h2>
+            <div class="oab-badge">OAB/SP nº 465.287</div>
+        </header>
+
+        <!-- Links (Botões) -->
+        <main class="links-container">
+            
+            <!-- WhatsApp -->
+            <a href="https://wa.me/5514998787056" target="_blank" class="glass-btn">
+                <div class="btn-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                <span class="btn-text">Iniciar Atendimento</span>
+                <i class="fas fa-chevron-right btn-arrow"></i>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://instagram.com/lorrainepiza.adv" target="_blank" class="glass-btn">
+                <div class="btn-icon"><i class="fa-brands fa-instagram"></i></div>
+                <span class="btn-text">Instagram</span>
+                <i class="fas fa-chevron-right btn-arrow"></i>
+            </a>
+
+            <!-- Localização -->
+            <a href="https://www.google.com/maps/search/?api=1&query=Rua+Dom+Pedro+II,+396,+Centro,+Lins+SP" target="_blank" class="glass-btn">
+                <div class="btn-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <span class="btn-text">Localização Escritório</span>
+                <i class="fas fa-chevron-right btn-arrow"></i>
+            </a>
+
+            <!-- E-mail -->
+            <a href="mailto:lorrainepizalopes@gmail.com" class="glass-btn">
+                <div class="btn-icon"><i class="fa-regular fa-envelope"></i></div>
+                <span class="btn-text">Enviar E-mail</span>
+                <i class="fas fa-chevron-right btn-arrow"></i>
+            </a>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Dra. Lorraine Ferreira de Toledo Piza Lopes</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
